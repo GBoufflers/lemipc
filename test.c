@@ -5,11 +5,10 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Wed Mar 27 17:50:24 2013 florian dell-aiera
+** Last update Wed Mar 27 18:15:43 2013 florian dell-aiera
 */
 
 #include "lemipc.h"
-
 
 char	*recup_map(char *str)
 {
@@ -26,32 +25,6 @@ char	*recup_map(char *str)
   return (addr);
 }
 
-void	boucle(t_map *ptr)
-{
-  ptr->continuer = 1;
-  while (ptr->continuer);
-}
-
-int	init(t_map *ptr)
-{
-  int	i;
-
-  i = 0;
-  ptr->screen = NULL;
-  ptr->rectangle[25] = NULL;
-  if (SDL_Init(SDL_INIT_VIDEO) == -1)
-    return (-1);
-  ptr->screen = SDL_SetVideoMode(HEIGHT, WIDTH, 32, SDL_HWSURFACE | SDL_RESIZABLE | SDL_DOUBLEBUF);
-  if (ptr->screen == NULL)
-    return (-1);
-  while (i < 25)
-    {
-      ptr->rectangle[i] = SDL_CreateRGBSurface(SDL_HWSURFACE, 50, 50, 32, 0, 0, 0, 0);
-      i++;
-    }
-  SDL_WM_SetCaption("lemIPC", NULL);
-  return (0);
-}
 
 void	set_position(t_map *ptr, int i)
 {
@@ -70,6 +43,7 @@ void	set_position(t_map *ptr, int i)
 	}
     }
 }
+
 
 void	draw(t_map *ptr)
 {
@@ -94,6 +68,45 @@ void	draw(t_map *ptr)
   SDL_Flip(ptr->screen);
 }
 
+
+void	boucle(t_map *ptr)
+{
+  SDL_Event	event;
+
+  ptr->continuer = 1;
+  while (ptr->continuer)
+    {
+      SDL_PollEvent(&event);
+      switch (event.type)
+	{
+	case SDL_QUIT:
+	  ptr->continuer = 0;
+	}
+      draw(ptr);
+    }
+}
+
+int	init(t_map *ptr)
+{
+  int	i;
+
+  i = 0;
+  ptr->screen = NULL;
+  ptr->rectangle[25] = NULL;
+  if (SDL_Init(SDL_INIT_VIDEO) == -1)
+    return (-1);
+  ptr->screen = SDL_SetVideoMode(HEIGHT, WIDTH, 32, SDL_HWSURFACE | SDL_RESIZABLE | SDL_DOUBLEBUF);
+  if (ptr->screen == NULL)
+    return (-1);
+  while (i < 25)
+    {
+      ptr->rectangle[i] = SDL_CreateRGBSurface(SDL_HWSURFACE, 50, 50, 32, 0, 0, 0, 0);
+      i++;
+    }
+  SDL_WM_SetCaption("lemIPC", NULL);
+  return (0);
+}
+
 int	main(int ac, char **av)
 {
   t_map	ptr;
@@ -103,7 +116,6 @@ int	main(int ac, char **av)
   ptr.map = recup_map(av[1]);
   if (init(&ptr) == -1 || ptr.map == NULL)
     return (0);
-  draw(&ptr);
   boucle(&ptr);
   SDL_Quit(); 
   return (0);
