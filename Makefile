@@ -1,6 +1,19 @@
+##
+## Makefile for lempic in /home/dell-a_f//projets/depot/lemipc
+## 
+## Made by florian dell-aiera
+## Login   <dell-a_f@epitech.net>
+## 
+## Started on  Thu Mar 28 10:08:41 2013 florian dell-aiera
+## Last update Thu Mar 28 16:55:01 2013 florian dell-aiera
+##
+
+
 NAME	=	lemipc
 NAMED	=	display
 
+
+NAME_2  =	display
 
 SRC	=	main.c\
 		players.c\
@@ -11,15 +24,19 @@ SRC	=	main.c\
 
 SRCD	=	display.c
 
+SRC_2	=	display.c
+
 OBJ	=	$(SRC:.c=.o)
 OBJD	=	$(SRCD:.c=.o)
+
+LDFLAGS	=	-lSDL
 
 all:		$(NAME) $(NAMED)
 
 $(NAME):	$(OBJ) $(OBJD)
 		cc -o $(NAME) $(OBJ)
-		cc -o $(NAMED) -lSDL $(OBJD)
-
+$(NAMED):	$(OBJD)
+		cc -o $(NAMED) $(OBJD) $(LDFLAGS)
 clean:
 		rm -f $(OBJ) $(OBJD)
 

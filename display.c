@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Wed Mar 27 18:15:43 2013 florian dell-aiera
+** Last update Thu Mar 28 16:53:09 2013 florian dell-aiera
 */
 
 #include "lemipc.h"
@@ -110,13 +110,20 @@ int	init(t_map *ptr)
 int	main(int ac, char **av)
 {
   t_map	ptr;
-  
+  int	i;
+
+  i = 0;
   if (ac != 2)
     return (-1);
   ptr.map = recup_map(av[1]);
   if (init(&ptr) == -1 || ptr.map == NULL)
     return (0);
   boucle(&ptr);
+  while (i < 25)
+    {
+      SDL_FreeSurface(ptr.rectangle[i]);
+      i++;
+    }
   SDL_Quit(); 
   return (0);
 }
