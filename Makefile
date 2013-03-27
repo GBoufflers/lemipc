@@ -14,6 +14,7 @@ NAMED	=	display
 
 
 SRC	=	main.c\
+		get.c\
 		players.c\
 		isleaving.c\
 		get_new_pos.c\

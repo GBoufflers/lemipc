@@ -21,7 +21,7 @@ void		step_two(t_game *game)
   printf("etape 2\n");
 }
 
-void		step_three(t_game *game)
+int		step_three(t_game *game)
 {
   int		ret;
 

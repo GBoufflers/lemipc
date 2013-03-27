@@ -35,6 +35,12 @@ typedef struct	s_game
   int		new;
 }		t_game;
 
+typedef struct	s_limit
+{
+  int		beg;
+  int		end;
+}		t_limit;
+
 void		first_player(t_game *game);
 void		others(t_game *game);
 

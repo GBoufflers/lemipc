@@ -2,5 +2,5 @@
 
 int		get_rand_number()
 {
-  return (rand() % 25);
+  return (rand() % 49);
 }
