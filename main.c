@@ -66,7 +66,7 @@ void		others(t_game *game)
 {
   int		ret;
 
-  access = 0;
+  game->access = 0;
   game->addr = shmat(game->shm_id, NULL, SHM_R | SHM_W);
   ret = 0;
   while (1 && ret == 0)
@@ -74,7 +74,7 @@ void		others(t_game *game)
       lock(&(game->sops));
       semctl(game->sem_id, 0, GETVAL);
       semop(game->sem_id, &(game->sops), 1);
-      if (access == 0)
+      if (game->access == 0)
 	{
 	  game->access++;
 	  if (count_team(game->addr, '1') > count_team(game->addr, '2'))
@@ -87,31 +87,31 @@ void		others(t_game *game)
 	{
 	  game->access++;
 	  game->new = get_rand_number();
-	  while (addr[game->new] != 'o')
+	  while (game->addr[game->new] != 'o')
 	    game->new = get_rand_number();
-	  addr[game->new] = game->team;
+	  game->addr[game->new] = game->team;
 	  printf("etape 2\n");
 	}
       else
 	{
-	  if (is_quitting(addr, team, new) == 1)
+	  if (is_quitting(game->addr, game->team, game->new) == 1)
 	    ret = -1;
 	  else
 	    {
-	      addr[new] = 'o';
-	      new = get_rand_number();
-	      while (addr[new] != 'o')
-		new = get_rand_number();
-	      addr[new] = team;
-	      printf("etape 3 position %d\n", new);
+	      game->addr[game->new] = 'o';
+	      game->new = get_rand_number();
+	      while (game->addr[game->new] != 'o')
+		game->new = get_rand_number();
+	      game->addr[game->new] = game->team;
+	      printf("etape 3 position %d\n", game->new);
 	    }
 	}
-      unlock(&sops);
-      semop(sem_id, &sops, 1);
-      semctl(sem_id, 0, GETVAL);
+      unlock(&game->sops);
+      semop(game->sem_id, &game->sops, 1);
+      semctl(game->sem_id, 0, GETVAL);
       sleep(1);
     }
-  shmctl(shm_id, IPC_RMID, NULL);
+  shmctl(game->shm_id, IPC_RMID, NULL);
 }
 
 int		main(int ac, char **av)
@@ -129,8 +129,8 @@ int		main(int ac, char **av)
   game->shm_id = shmget(game->key, 42, SHM_R | SHM_W);
   printf("shmId = %d\n", game->shm_id);
   if (game->shm_id == -1)
-    first_player(game->key, game->shm_id, game->sem_id);
+    first_player(game);
   else
-    others(game->key, game->shm_id, game->sem_id);
+    others(game);
   return (0);
 }
