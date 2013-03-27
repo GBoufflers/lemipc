@@ -13,8 +13,6 @@ NAME	=	lemipc
 NAMED	=	display
 
 
-NAME_2  =	display
-
 SRC	=	main.c\
 		players.c\
 		isleaving.c\
@@ -23,8 +21,6 @@ SRC	=	main.c\
 		lock.c
 
 SRCD	=	display.c
-
-SRC_2	=	display.c
 
 OBJ	=	$(SRC:.c=.o)
 OBJD	=	$(SRCD:.c=.o)
@@ -35,6 +31,7 @@ all:		$(NAME) $(NAMED)
 
 $(NAME):	$(OBJ) $(OBJD)
 		cc -o $(NAME) $(OBJ)
+
 $(NAMED):	$(OBJD)
 		cc -o $(NAMED) $(OBJD) $(LDFLAGS)
 clean:
