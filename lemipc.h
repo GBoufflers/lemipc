@@ -35,4 +35,7 @@ typedef struct	s_game
   int		new;
 }		t_game;
 
+void		first_player(t_game *game);
+void		others(t_game *game);
+
 #endif
