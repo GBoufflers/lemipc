@@ -19,9 +19,9 @@ int		count_team(char *map, char c)
 void		first_player(t_game *game)
 {
   game->sem_id = semget(game->key, 1, SHM_R | SHM_W | IPC_CREAT);
-  game->shm_id = shmget(game->key,  42, IPC_CREAT | SHM_R | SHM_W);
+  game->shm_id = shmget(game->key,  52, IPC_CREAT | SHM_R | SHM_W);
   game->addr = shmat(game->shm_id, NULL, SHM_R | SHM_W);
-  sprintf((char *)game->addr, "ooooooooooooooooooooooooo");
+  sprintf((char *)game->addr, "ooooooooooooooooooooooooooooooooooooooooooooooooo");
   printf("Created shm segment %d\n", game->shm_id);
   semctl(game->sem_id, 0, SETVAL, 1);
   while (1)
