@@ -18,7 +18,7 @@ typedef struct	s_map
 {
   char		*map;
   SDL_Surface	*screen;
-  SDL_Surface	*rectangle[25];
+  SDL_Surface	*rectangle[49];
   SDL_Rect	 pos;
   int		continuer;
 }		t_map;

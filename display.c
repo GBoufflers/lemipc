@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Thu Mar 28 16:53:09 2013 florian dell-aiera
+** Last update Thu Mar 28 18:24:44 2013 florian dell-aiera
 */
 
 #include "lemipc.h"
@@ -19,7 +19,7 @@ char	*recup_map(char *str)
   struct sembuf sops;
 
   key = ftok(str, 0);
-  shm_id= shmget(key, 42, SHM_R | SHM_W);
+  shm_id= shmget(key, 52, SHM_R | SHM_W);
   if (shm_id != -1)
     addr = (char*)shmat(shm_id, NULL, SHM_R | SHM_W);
   return (addr);
@@ -36,7 +36,7 @@ void	set_position(t_map *ptr, int i)
   else
     {
       ptr->pos.x += 55;
-      if (i % 5 == 0)
+      if (i % 7 == 0)
 	{
 	  ptr->pos.y += 55;
 	  ptr->pos.x = 200;
@@ -50,7 +50,7 @@ void	draw(t_map *ptr)
   int	i;
   
   i = 0;
-  while (i < 25)
+  while (i < 49)
     {
       set_position(ptr, i);
       if (ptr->map[i] == 'o')
@@ -98,7 +98,7 @@ int	init(t_map *ptr)
   ptr->screen = SDL_SetVideoMode(HEIGHT, WIDTH, 32, SDL_HWSURFACE | SDL_RESIZABLE | SDL_DOUBLEBUF);
   if (ptr->screen == NULL)
     return (-1);
-  while (i < 25)
+  while (i < 49)
     {
       ptr->rectangle[i] = SDL_CreateRGBSurface(SDL_HWSURFACE, 50, 50, 32, 0, 0, 0, 0);
       i++;
@@ -119,7 +119,7 @@ int	main(int ac, char **av)
   if (init(&ptr) == -1 || ptr.map == NULL)
     return (0);
   boucle(&ptr);
-  while (i < 25)
+  while (i < 49)
     {
       SDL_FreeSurface(ptr.rectangle[i]);
       i++;

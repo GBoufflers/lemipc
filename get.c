@@ -20,22 +20,10 @@ void		init(t_limit *limit)
 
 int		getX(int pos)
 {
-  t_limit	*limit;
-  int		x;
-
-  x = 0;
-  limit = malloc(7 * sizeof(t_limit));
-  init(limit);
-  while (x < 7)
-    {
-      if (pos >= limit[x].beg && pos <= limit[x].end)
-	break;
-      x++;
-    }
-  return (x + 1);
+  return (0);
 }
 
 int		getY(int pos)
 {
-  return (pos % 7);
+  return (0);
 }
