@@ -5,34 +5,42 @@
 ## Login   <dell-a_f@epitech.net>
 ## 
 ## Started on  Thu Mar 28 10:08:41 2013 florian dell-aiera
-## Last update Thu Mar 28 10:25:39 2013 florian dell-aiera
+## Last update Thu Mar 28 16:55:01 2013 florian dell-aiera
 ##
 
 
 NAME	=	lemipc
+NAMED	=	display
+
 
 NAME_2  =	display
 
 SRC	=	main.c\
+		players.c\
+		isleaving.c\
+		get_new_pos.c\
+		steps.c\
+		lock.c
+
+SRCD	=	display.c
 
 SRC_2	=	display.c
 
 OBJ	=	$(SRC:.c=.o)
-
-OBJ_2	=	$(SRC_2:.c=.o)
+OBJD	=	$(SRCD:.c=.o)
 
 LDFLAGS	=	-lSDL
 
-all:		$(NAME) $(NAME_2)
+all:		$(NAME) $(NAMED)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(OBJD)
 		cc -o $(NAME) $(OBJ)
-$(NAME_2):	$(OBJ_2)
-		cc -o $(NAME_2) $(OBJ_2) $(LDFLAGS)
+$(NAMED):	$(OBJD)
+		cc -o $(NAMED) $(OBJD) $(LDFLAGS)
 clean:
-		rm -f $(OBJ)
-		rm -f $(OBJ_2)
+		rm -f $(OBJ) $(OBJD)
+
 fclean:		clean
-		rm -f $(NAME)
-		rm -f $(NAME_2)
+		rm -f $(NAME) $(NAMED)
+
 re:		fclean all

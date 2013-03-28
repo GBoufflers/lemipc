@@ -23,4 +23,19 @@ typedef struct	s_map
   int		continuer;
 }		t_map;
 
+typedef struct	s_game
+{
+  key_t		key;
+  int		shm_id;
+  int		sem_id;
+  char		*addr;
+  struct sembuf sops;
+  char		team;
+  int		access;
+  int		new;
+}		t_game;
+
+void		first_player(t_game *game);
+void		others(t_game *game);
+
 #endif
