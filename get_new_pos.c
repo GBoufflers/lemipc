@@ -30,7 +30,7 @@ int		get_rand_number(t_game *game)
 	pos -= 1;
       if (nb == 3 && pos > 6)
 	pos -= 7;
+      nb = rand() % 4;
     }
-  printf("pos ==> %d \n", pos);
   return (pos);
 }
