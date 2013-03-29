@@ -33,6 +33,7 @@ typedef struct	s_game
   char		team;
   int		access;
   int		new;
+  int		first;
 }		t_game;
 
 typedef struct	s_limit

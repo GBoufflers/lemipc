@@ -14,9 +14,8 @@ void		step_one(t_game *game)
 void		step_two(t_game *game)
 {
   game->access++;
-  game->new = get_rand_number();
-  while (game->addr[game->new] != 'o')
-    game->new = get_rand_number();
+  if (game->first == 0)
+    game->new = get_pos_depart(game);
   game->addr[game->new] = game->team;
   printf("etape 2\n");
 }
@@ -24,17 +23,22 @@ void		step_two(t_game *game)
 int		step_three(t_game *game)
 {
   printf("etape 3\n");
-  if (is_quitting(game->addr, game->team, game->new) == 1)
+  if (is_quitting(game, game->team, game->new) == 1)
     {
+      
+      /* if (count_team(game->addr, '1')  <= 1) */
+      /* 	return (-1); */
+      /* if (count_team(game->addr, '2')  <= 1) */
+      /* 	return (-1);  */
       printf("leaving\n");
-      return (-1);
+      return (0);
     }
-  else
+  else if (game->team != 'o')
     {
       game->addr[game->new] = 'o';
-      game->new = get_rand_number();
+      game->new = get_rand_number(game);
       while (game->addr[game->new] != 'o')
-	game->new = get_rand_number();
+	game->new = get_rand_number(game);
       game->addr[game->new] = game->team;
       return (0);
     }

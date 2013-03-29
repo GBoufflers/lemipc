@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Thu Mar 28 18:24:44 2013 florian dell-aiera
+** Last update Fri Mar 29 12:19:48 2013 florian dell-aiera
 */
 
 #include "lemipc.h"
@@ -92,7 +92,7 @@ int	init(t_map *ptr)
 
   i = 0;
   ptr->screen = NULL;
-  ptr->rectangle[25] = NULL;
+  ptr->rectangle[49] = NULL;
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return (-1);
   ptr->screen = SDL_SetVideoMode(HEIGHT, WIDTH, 32, SDL_HWSURFACE | SDL_RESIZABLE | SDL_DOUBLEBUF);

@@ -20,10 +20,10 @@ void		init(t_limit *limit)
 
 int		getX(int pos)
 {
-  return (0);
+  return (pos % 7);
 }
 
 int		getY(int pos)
 {
-  return (0);
+  return (pos / 7);
 }
