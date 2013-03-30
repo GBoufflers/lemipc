@@ -39,19 +39,19 @@ int		check_map(char **map, char ennemie, int x, int y)
   int		nb;
 
   nb = 0;
-  if (x >= 1 && map[x -1][y] == ennemie)
-    nb++;
-  if (x >= 1 && y >= 1 && map[x - 1][y - 1] == ennemie)
+  if (x >= 1 && map[x - 1][y] == ennemie)
     nb++;
   if (y >= 1 && map[x][y -1] == ennemie)
     nb++;
-  if (x < 6 && map[x + 1][y - 1] == ennemie)
-    nb++;
   if (x < 6 && map[x + 1][y] == ennemie)
     nb++;
-  if (x < 6 && y < 6 && map[x + 1][y + 1] == ennemie)
-    nb++;
   if (y < 6 && map[x][y + 1] == ennemie)
+    nb++;
+  if (x >= 1 && y >= 1 && map[x - 1][y - 1] == ennemie)
+    nb++;
+  if (x < 6 && map[x + 1][y - 1] == ennemie)
+    nb++;
+  if (x < 6 && y < 6 && map[x + 1][y + 1] == ennemie)
     nb++;
   if (x >= 1 && y < 6 && map[x -1][y + 1] == ennemie)
     nb++;
@@ -68,8 +68,6 @@ int		check_ennemie(char **map, char team, int x, int y)
   else
     ennemie = '1';
   nb = check_map(map, ennemie, x, y);
-  if (nb >= 2)
-    printf("NB =====>>>>> %d la team qui doit rester %c ", nb, team);
   return (nb);
 }
 
@@ -87,7 +85,6 @@ int		is_quitting(t_game *game, char team, int pos)
   if (ret >= 2)
     {
       game->addr[pos] = 'o';
-      printf("le X ===> %d et le Y =>>> %d\n", x, y);
       game->team = 'o';
       return (1);
     }

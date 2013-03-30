@@ -20,18 +20,25 @@ void		step_two(t_game *game)
   printf("etape 2\n");
 }
 
+int		check_play(t_game *game)
+{
+  if (game->play == 1)
+    if (count_team(game->addr, '1') <= 1 || count_team(game->addr, '2') <= 1)
+      return (-1);
+  return (0);
+}
+
 int		step_three(t_game *game)
 {
-  printf("etape 3\n");
+  int		ret;
+
+  ret = check_play(game);
+  if (ret == -1)
+    return (-1);
   if (is_quitting(game, game->team, game->new) == 1)
-    {
-      
-      /* if (count_team(game->addr, '1')  <= 1) */
-      /* 	return (-1); */
-      /* if (count_team(game->addr, '2')  <= 1) */
-      /* 	return (-1);  */
+    {      
       printf("leaving\n");
-      return (0);
+      return (-1);
     }
   else if (game->team != 'o')
     {
@@ -42,4 +49,6 @@ int		step_three(t_game *game)
       game->addr[game->new] = game->team;
       return (0);
     }
+  else
+    return (0);
 }

@@ -34,6 +34,7 @@ typedef struct	s_game
   int		access;
   int		new;
   int		first;
+  int		play;
 }		t_game;
 
 typedef struct	s_limit
@@ -44,5 +45,6 @@ typedef struct	s_limit
 
 void		first_player(t_game *game);
 void		others(t_game *game);
-
+void		*xmalloc(int size);
+char		*recup_map(char *str);
 #endif

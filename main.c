@@ -9,7 +9,7 @@ int		main(int ac, char **av)
       printf("Usage : %s pathname\n", av[0]);
       return (-1);
     }
-  game = malloc(sizeof(t_game));
+  game = xmalloc(sizeof(t_game));
   srand(time(NULL));
   game->key = ftok(av[1], 0);
   game->shm_id = shmget(game->key, 52, SHM_R | SHM_W);
