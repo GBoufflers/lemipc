@@ -5,7 +5,7 @@
 ## Login   <dell-a_f@epitech.net>
 ## 
 ## Started on  Thu Mar 28 10:08:41 2013 florian dell-aiera
-## Last update Sat Mar 30 17:16:43 2013 florian dell-aiera
+## Last update Sat Mar 30 17:22:49 2013 florian dell-aiera
 ##
 
 
@@ -20,7 +20,6 @@ SRC	=	main.c\
 		get_new_pos.c\
 		steps.c\
 		lock.c \
-		check_team.c \
 		xmalloc.c
 
 SRCD	=	display.c \
