@@ -23,8 +23,10 @@ int		main()
     }
   game = xmalloc(sizeof(t_game));
   srand(time(NULL));
-  game->key = ftok(str, 0);
-  game->shm_id = shmget(game->key, 52, SHM_R | SHM_W);
+  if ((game->key = ftok(str, 0)) == -1)
+    return (-1);
+  if ((game->shm_id = shmget(game->key, 52, SHM_R | SHM_W)) == -1)
+    return (-1);
   printf("shmId = %d\n", game->shm_id);
   game->first = 0;
   if (game->shm_id == -1)

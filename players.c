@@ -33,14 +33,18 @@ static void    	end(t_game *game)
       if (count_team(game->addr, '1') <= 1)
 	{
 	  printf("blue win\n");
-	  shmctl(game->shm_id, IPC_RMID, NULL);
-	  semctl(game->sem_id, 0, IPC_RMID, 0);
+	  if (shmctl(game->shm_id, IPC_RMID, NULL) == -1)
+	    exit(-1);
+	  if (semctl(game->sem_id, 0, IPC_RMID, 0) == -1)
+	    exit(-1);
 	}
       if (count_team(game->addr, '2') <= 1)
 	{
 	  printf("red win\n");
-	  shmctl(game->shm_id, IPC_RMID, NULL);
-	  semctl(game->sem_id, 0, IPC_RMID, 0);
+	  if (shmctl(game->shm_id, IPC_RMID, NULL) == -1)
+	    exit(-1);
+	  if (semctl(game->sem_id, 0, IPC_RMID, 0) == -1)
+	    exit(-1);
 	}
     }
 }
@@ -52,13 +56,16 @@ void		first_player(t_game *game)
 
   ret = 0;
   nb = 0;
-  game->sem_id = semget(game->key, 1, SHM_R | SHM_W | IPC_CREAT);
-  game->shm_id = shmget(game->key,  52, IPC_CREAT | SHM_R | SHM_W);
+  if ((game->sem_id = semget(game->key, 1, SHM_R | SHM_W | IPC_CREAT)) == -1)
+    exit(-1);
+  if ((game->shm_id = shmget(game->key,  52, IPC_CREAT | SHM_R | SHM_W)) == -1)
+    exit(-1);
   game->addr = shmat(game->shm_id, NULL, SHM_R | SHM_W);
   sprintf((char *)game->addr,
 	  "ooooooooooooooooooooooooooooooooooooooooooooooooo");
   printf("Created shm segment %d\n", game->shm_id);
-  semctl(game->sem_id, 0, SETVAL, 1);
+  if ((semctl(game->sem_id, 0, SETVAL, 1)) == -1)
+    exit(-1);
   do_game(game, ret, nb);
   end(game);
 }
