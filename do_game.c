@@ -15,10 +15,8 @@ void		do_game(t_game *game, int ret, int nb)
   while (1 && ret == 0)
     {
       lock(&(game->sops));
-      if (semctl(game->sem_id, 0, GETVAL) == -1)
-	exit(-1);
-      if (semop(game->sem_id, &(game->sops), 1) == -1)
-	exit(-1);
+      semctl(game->sem_id, 0, GETVAL);
+      semop(game->sem_id, &(game->sops), 1);
       if (game->access == 0)
 	step_one(game);
       else if (game->access == 1)
@@ -29,9 +27,7 @@ void		do_game(t_game *game, int ret, int nb)
       if (nb >= 4)
 	game->play = 1;
       unlock(&(game->sops));
-      if (semop(game->sem_id, &(game->sops), 1) == -1)
-	exit(-1);
-      if (semctl(game->sem_id, 0, GETVAL) == -1)
-	exit(-1);
+      semop(game->sem_id, &(game->sops), 1);
+      semctl(game->sem_id, 0, GETVAL);
     }
 }

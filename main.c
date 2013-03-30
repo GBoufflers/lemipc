@@ -17,16 +17,13 @@ int		main()
 
   str = getenv("PWD");
   if (str == NULL)
-    {
-      printf("variable pwd null\n");
-      return (-1);
-    }
+    return (-1);
   game = xmalloc(sizeof(t_game));
   srand(time(NULL));
-  if ((game->key = ftok(str, 0)) == -1)
+  game->key = ftok(str, 0);
+  if (game->key == -1)
     return (-1);
-  if ((game->shm_id = shmget(game->key, 52, SHM_R | SHM_W)) == -1)
-    return (-1);
+  game->shm_id = shmget(game->key, 52, SHM_R | SHM_W);
   printf("shmId = %d\n", game->shm_id);
   game->first = 0;
   if (game->shm_id == -1)
