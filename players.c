@@ -20,8 +20,14 @@ void		end(t_game *game)
 {
   if (game->play == 1)
     {
-      if (count_team(game->addr, '1') <= 1 || count_team(game->addr, '2') <= 1)
+      if (count_team(game->addr, '1') <= 1)
 	{
+	  printf("blue win\n");
+	  shmctl(game->shm_id, IPC_RMID, NULL);
+	}
+      if (count_team(game->addr, '2') <= 1)
+	{
+	  printf("red win\n");
 	  shmctl(game->shm_id, IPC_RMID, NULL);
 	}
     }
@@ -42,19 +48,17 @@ void		first_player(t_game *game)
   while (1 && ret == 0)
     {
       lock(&(game->sops));
-      sleep(1);
       semctl(game->sem_id, 0, GETVAL);
       semop(game->sem_id, &(game->sops), 1);
       if (game->access == 0)
 	step_one(game);
       else if (game->access == 1)
 	step_two(game);
-      else
+      else if (game->play == 1)
 	ret = step_three(game);
       nb = count_team(game->addr, '1') + count_team(game->addr, '2');
       if (nb >= 4)
 	game->play = 1;
-      printf("play %d\n", game->play);
       unlock(&(game->sops));
       semop(game->sem_id, &(game->sops), 1);
       semctl(game->sem_id, 0, GETVAL);
@@ -74,19 +78,17 @@ void		others(t_game *game)
   while (1 && ret == 0)
     {
       lock(&(game->sops));
-      sleep(1);
       semctl(game->sem_id, 0, GETVAL);
       semop(game->sem_id, &(game->sops), 1);
       if (game->access == 0)
 	step_one(game);
       else if (game->access == 1)
 	step_two(game);
-      else
+      else if (game->play == 1)
 	ret = step_three(game);
       nb = count_team(game->addr, '1') + count_team(game->addr, '2');      
       if (nb >= 4)
 	game->play = 1;
-      printf("play %d\n", game->play);
       unlock(&game->sops);
       semop(game->sem_id, &game->sops, 1);
       semctl(game->sem_id, 0, GETVAL);

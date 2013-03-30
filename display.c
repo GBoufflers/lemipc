@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Sat Mar 30 17:16:11 2013 florian dell-aiera
+** Last update Sat Mar 30 18:04:47 2013 florian dell-aiera
 */
 
 #include "lemipc.h"
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
   if (ac != 2)
     return (-1);
   ptr.map = recup_map(av[1]);
-  if (init(&ptr) == -1 || ptr.map == NULL)
+  if (init(&ptr) == -1 || ptr.map == NULL || ptr.map == "")
     return (0);
   boucle(&ptr);
   while (i < 49)
