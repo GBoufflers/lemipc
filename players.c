@@ -29,6 +29,7 @@ int		count_team(char *map, char c)
 static void    	end(t_game *game)
 {
   int		ret;
+
   if (game->play == 1)
     {
       if (count_team(game->addr, '1') <= 1)
