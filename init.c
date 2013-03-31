@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sat Mar 30 17:15:44 2013 florian dell-aiera
-** Last update Sun Mar 31 14:12:08 2013 florian dell-aiera
+** Last update Sun Mar 31 14:59:21 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -14,9 +14,7 @@ char		*recup_map(char *str)
 {
   key_t		key;
   int		shm_id;
-  int		sem_id;
   char		*addr;
-  struct sembuf	sops;
 
   key = ftok(str, 0);
   shm_id= shmget(key, 52, SHM_R | SHM_W);
@@ -27,7 +25,6 @@ char		*recup_map(char *str)
     }
   return (NULL);
 }
-
 
 void		set_position(t_map *ptr, int i)
 {

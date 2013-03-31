@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:07:07 2013 florian dell-aiera
-** Last update Sun Mar 31 14:16:16 2013 florian dell-aiera
+** Last update Sun Mar 31 15:05:33 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -46,13 +46,12 @@ static char	**build_map(char *str)
   while (i < 7)
     {
       map[i] = xmalloc(8 * sizeof(char));
-      i++;      
+      i++;
     }
   map[7] = NULL;
   map = construct_map(map, str);
   return (map);
 }
-
 
 int		check_map(char **map, char ennemie, int x, int y)
 {

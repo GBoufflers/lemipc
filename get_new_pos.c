@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:07:28 2013 florian dell-aiera
-** Last update Sun Mar 31 14:07:30 2013 florian dell-aiera
+** Last update Sun Mar 31 14:53:22 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -25,7 +25,6 @@ int		get_rand_number(t_game *game)
 {
   int		nb;
   int		pos;
-  int		max;
 
   nb = rand() % 4;
   pos = game->new;

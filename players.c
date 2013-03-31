@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:08:04 2013 florian dell-aiera
-** Last update Sun Mar 31 14:08:05 2013 florian dell-aiera
+** Last update Sun Mar 31 15:03:21 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -49,30 +49,15 @@ void		first_player(t_game *game)
   int		nb;
 
   ret = 0;
+  nb = 0;
   game->sem_id = semget(game->key, 1, SHM_R | SHM_W | IPC_CREAT);
   game->shm_id = shmget(game->key,  52, IPC_CREAT | SHM_R | SHM_W);
   game->addr = shmat(game->shm_id, NULL, SHM_R | SHM_W);
-  sprintf((char *)game->addr, "ooooooooooooooooooooooooooooooooooooooooooooooooo\0");
+  sprintf((char *)game->addr,
+	  "ooooooooooooooooooooooooooooooooooooooooooooooooo");
   printf("Created shm segment %d\n", game->shm_id);
   semctl(game->sem_id, 0, SETVAL, 1);
-  while (1 && ret == 0)
-    {
-      lock(&(game->sops));
-      semctl(game->sem_id, 0, GETVAL);
-      semop(game->sem_id, &(game->sops), 1);
-      if (game->access == 0)
-	step_one(game);
-      else if (game->access == 1)
-	step_two(game);
-      else if (game->play == 1)
-	ret = step_three(game);
-      nb = count_team(game->addr, '1') + count_team(game->addr, '2');
-      if (nb >= 4)
-	game->play = 1;
-      unlock(&(game->sops));
-      semop(game->sem_id, &(game->sops), 1);
-      semctl(game->sem_id, 0, GETVAL);
-    }
+  do_game(game, ret, nb);
   end(game);
 }
 
@@ -86,23 +71,6 @@ void		others(t_game *game)
   ret = 0;
   nb = 0;
   check_nb_players(game);
-  while (1 && ret == 0)
-    {
-      lock(&(game->sops));
-      semctl(game->sem_id, 0, GETVAL);
-      semop(game->sem_id, &(game->sops), 1);
-      if (game->access == 0)
-	step_one(game);
-      else if (game->access == 1)
-	step_two(game);
-      else if (game->play == 1)
-	ret = step_three(game);
-      nb = count_team(game->addr, '1') + count_team(game->addr, '2');      
-      if (nb >= 4)
-	game->play = 1;
-      unlock(&game->sops);
-      semop(game->sem_id, &game->sops, 1);
-      semctl(game->sem_id, 0, GETVAL);
-    }
+  do_game(game, ret, nb);
   end(game);
 }

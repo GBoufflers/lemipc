@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Sun Mar 31 13:45:12 2013 florian dell-aiera
+** Last update Sun Mar 31 15:04:33 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -13,7 +13,7 @@
 void		draw(t_map *ptr)
 {
   int		i;
-  
+
   i = 0;
   while (i < 49)
     {
@@ -67,6 +67,6 @@ int		main(int ac, char **av)
       SDL_FreeSurface(ptr.rectangle[i]);
       i++;
     }
-  SDL_Quit(); 
+  SDL_Quit();
   return (0);
 }

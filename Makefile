@@ -5,7 +5,7 @@
 ## Login   <dell-a_f@epitech.net>
 ## 
 ## Started on  Thu Mar 28 10:08:41 2013 florian dell-aiera
-## Last update Sun Mar 31 14:15:43 2013 florian dell-aiera
+## Last update Sun Mar 31 14:51:25 2013 florian dell-aiera
 ##
 
 
@@ -22,7 +22,8 @@ SRC	=	main.c\
 		lock.c \
 		xmalloc.c \
 		check_nb_players.c \
-		check_map.c
+		check_map.c \
+		do_game.c
 
 SRCD	=	display.c \
 		init.c
@@ -31,7 +32,7 @@ OBJ	=	$(SRC:.c=.o)
 OBJD	=	$(SRCD:.c=.o)
 
 LDFLAGS	=	-lSDL
-CFLAGS	=	-g
+CFLAGS	=	-g -W -Wall
 
 all:		$(NAME) $(NAMED)
 
