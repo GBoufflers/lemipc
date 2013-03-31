@@ -1,3 +1,13 @@
+/*
+** main.c for lemipc in /home/dell-a_f//projets/depot/lemipc
+** 
+** Made by florian dell-aiera
+** Login   <dell-a_f@epitech.net>
+** 
+** Started on  Sun Mar 31 14:07:56 2013 florian dell-aiera
+** Last update Sun Mar 31 14:07:57 2013 florian dell-aiera
+*/
+
 #include	"lemipc.h"
 
 int		main(int ac, char **av)

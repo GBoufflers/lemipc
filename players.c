@@ -1,3 +1,13 @@
+/*
+** players.c for lemipc in /home/dell-a_f//projets/depot/lemipc
+** 
+** Made by florian dell-aiera
+** Login   <dell-a_f@epitech.net>
+** 
+** Started on  Sun Mar 31 14:08:04 2013 florian dell-aiera
+** Last update Sun Mar 31 14:08:05 2013 florian dell-aiera
+*/
+
 #include	"lemipc.h"
 
 int		count_team(char *map, char c)
@@ -75,6 +85,7 @@ void		others(t_game *game)
   game->addr = shmat(game->shm_id, NULL, SHM_R | SHM_W);
   ret = 0;
   nb = 0;
+  check_nb_players(game);
   while (1 && ret == 0)
     {
       lock(&(game->sops));

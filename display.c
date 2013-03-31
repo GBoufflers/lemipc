@@ -5,14 +5,14 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Sat Mar 30 18:04:47 2013 florian dell-aiera
+** Last update Sun Mar 31 13:45:12 2013 florian dell-aiera
 */
 
-#include "lemipc.h"
+#include	"lemipc.h"
 
-void	draw(t_map *ptr)
+void		draw(t_map *ptr)
 {
-  int	i;
+  int		i;
   
   i = 0;
   while (i < 49)
@@ -33,8 +33,7 @@ void	draw(t_map *ptr)
   SDL_Flip(ptr->screen);
 }
 
-
-void	boucle(t_map *ptr)
+void		boucle(t_map *ptr)
 {
   SDL_Event	event;
 
@@ -51,16 +50,16 @@ void	boucle(t_map *ptr)
     }
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
-  t_map	ptr;
-  int	i;
+  t_map		ptr;
+  int		i;
 
   i = 0;
   if (ac != 2)
     return (-1);
   ptr.map = recup_map(av[1]);
-  if (init(&ptr) == -1 || ptr.map == NULL || ptr.map == "")
+  if (init_display(&ptr) == -1 || ptr.map == NULL)
     return (0);
   boucle(&ptr);
   while (i < 49)

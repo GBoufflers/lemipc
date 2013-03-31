@@ -1,3 +1,13 @@
+/*
+** lemipc.h for lemipc in /home/dell-a_f//projets/depot/lemipc
+** 
+** Made by florian dell-aiera
+** Login   <dell-a_f@epitech.net>
+** 
+** Started on  Sun Mar 31 14:07:44 2013 florian dell-aiera
+** Last update Sun Mar 31 14:11:28 2013 florian dell-aiera
+*/
+
 #ifndef		__LEMIPC_H__
 #define		__LEMIPC_H__
 
@@ -11,8 +21,8 @@
 #include	<semaphore.h>
 #include	<SDL/SDL.h>
 
-#define	HEIGHT	640
-#define	WIDTH	640
+#define	H	640
+#define	W	640
 
 typedef struct	s_map
 {
