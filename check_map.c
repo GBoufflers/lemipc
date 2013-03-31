@@ -5,14 +5,14 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:12:32 2013 florian dell-aiera
-** Last update Sun Mar 31 16:12:10 2013 florian dell-aiera
+** Last update Sun Mar 31 20:32:48 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
 
 int		check_map_top(char **map, char ennemie, int x, int y)
 {
-  int	nb;
+  int		nb;
 
   nb = 0;
   if (x >= 1 && map[x - 1][y] == ennemie)
