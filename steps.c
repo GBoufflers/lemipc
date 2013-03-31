@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:08:10 2013 florian dell-aiera
-** Last update Sun Mar 31 15:05:40 2013 florian dell-aiera
+** Last update Sun Mar 31 20:23:29 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -28,7 +28,7 @@ void		step_two(t_game *game)
   game->addr[game->new] = game->team;
 }
 
-static int     	check_play(t_game *game)
+static int	check_play(t_game *game)
 {
   if (game->play == 1)
     if (count_team(game->addr, '1') <= 1 || count_team(game->addr, '2') <= 1)

@@ -5,7 +5,7 @@
 ## Login   <dell-a_f@epitech.net>
 ## 
 ## Started on  Thu Mar 28 10:08:41 2013 florian dell-aiera
-## Last update Sun Mar 31 16:14:08 2013 florian dell-aiera
+## Last update Sun Mar 31 20:22:43 2013 florian dell-aiera
 ##
 
 
@@ -13,12 +13,12 @@ NAME	=	lemipc
 NAMED	=	display
 
 
-SRC	=	main.c\
-		get.c\
-		players.c\
-		isleaving.c\
-		get_new_pos.c\
-		steps.c\
+SRC	=	main.c \
+		get.c \
+		players.c \
+		isleaving.c \
+		get_new_pos.c \
+		steps.c \
 		lock.c \
 		xmalloc.c \
 		check_nb_players.c \

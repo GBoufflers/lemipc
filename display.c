@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Sun Mar 31 16:28:32 2013 florian dell-aiera
+** Last update Sun Mar 31 20:17:15 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -42,7 +42,7 @@ static void	draw_map(t_map *ptr)
   printf("\n");
 }
 
-static void    	draw(t_map *ptr)
+static void	draw(t_map *ptr)
 {
   int		i;
 

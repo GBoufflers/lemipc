@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:08:04 2013 florian dell-aiera
-** Last update Sun Mar 31 16:34:59 2013 florian dell-aiera
+** Last update Sun Mar 31 20:23:03 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -26,9 +26,10 @@ int		count_team(char *map, char c)
   return (count);
 }
 
-static void    	end(t_game *game)
+static void	end(t_game *game)
 {
   int		ret;
+
   if (game->play == 1)
     {
       if (count_team(game->addr, '1') <= 1)
