@@ -5,12 +5,44 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Sun Mar 31 15:04:33 2013 florian dell-aiera
+** Last update Sun Mar 31 15:46:25 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
 
-void		draw(t_map *ptr)
+static void	check_game(t_map *ptr)
+{
+  if (ptr->nb_players == 1)
+    {
+      if (count_team(ptr->map, '1') <= 1)
+	{
+	  printf("blue win\n");
+	  ptr->continuer = 0;
+	}
+      if (count_team(ptr->map, '2') <= 1)
+	{
+	  printf("red win\n");
+	  ptr->continuer = 0;
+	}
+    }
+}
+
+static void	draw_map(t_map *ptr)
+{
+  int		i;
+
+  i = 0;
+  while (ptr->map[i])
+    {
+      if (i % 7 == 0)
+	printf("\n");
+      printf("%c", ptr->map[i]);
+      i++;
+    }
+  printf("\n");
+}
+
+static void    	draw(t_map *ptr)
 {
   int		i;
 
@@ -31,9 +63,14 @@ void		draw(t_map *ptr)
       i++;
     }
   SDL_Flip(ptr->screen);
+  usleep(500000);
+  draw_map(ptr);
+  if ((count_team(ptr->map, '1') + count_team(ptr->map, '2')) >= 4)
+    ptr->nb_players = 1;
+  check_game(ptr);
 }
 
-void		boucle(t_map *ptr)
+static void	boucle(t_map *ptr)
 {
   SDL_Event	event;
 

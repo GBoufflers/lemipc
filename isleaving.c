@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:07:07 2013 florian dell-aiera
-** Last update Sun Mar 31 15:05:33 2013 florian dell-aiera
+** Last update Sun Mar 31 15:50:40 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -53,7 +53,7 @@ static char	**build_map(char *str)
   return (map);
 }
 
-int		check_map(char **map, char ennemie, int x, int y)
+static int     	check_map(char **map, char ennemie, int x, int y)
 {
   int		nb;
 
@@ -63,7 +63,7 @@ int		check_map(char **map, char ennemie, int x, int y)
   return (nb);
 }
 
-int		check_ennemie(char **map, char team, int x, int y)
+static int     	check_ennemie(char **map, char team, int x, int y)
 {
   char		ennemie;
   int		nb;

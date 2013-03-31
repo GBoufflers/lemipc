@@ -5,10 +5,27 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sat Mar 30 17:15:44 2013 florian dell-aiera
-** Last update Sun Mar 31 14:59:21 2013 florian dell-aiera
+** Last update Sun Mar 31 15:45:25 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
+
+
+int		count_team(char *map, char c)
+{
+  int		count;
+  int		i;
+
+  i = 0;
+  count = 0;
+  while (map[i] != '\0')
+    {
+      if (map[i] == c)
+	count++;
+      i++;
+    }
+  return (count);
+}
 
 char		*recup_map(char *str)
 {
@@ -63,5 +80,6 @@ int		init_display(t_map *ptr)
       i++;
     }
   SDL_WM_SetCaption("lemIPC", NULL);
+  ptr->nb_players = 0;
   return (0);
 }

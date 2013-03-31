@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:07:44 2013 florian dell-aiera
-** Last update Sun Mar 31 14:58:59 2013 florian dell-aiera
+** Last update Sun Mar 31 15:43:18 2013 florian dell-aiera
 */
 
 #ifndef		__LEMIPC_H__
@@ -31,8 +31,9 @@ typedef struct	s_map
   char		*map;
   SDL_Surface	*screen;
   SDL_Surface	*rectangle[49];
-  SDL_Rect	 pos;
+  SDL_Rect	pos;
   int		continuer;
+  int		nb_players;
 }		t_map;
 
 typedef struct	s_game
