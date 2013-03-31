@@ -5,11 +5,10 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sat Mar 30 17:15:44 2013 florian dell-aiera
-** Last update Sun Mar 31 15:45:25 2013 florian dell-aiera
+** Last update Sun Mar 31 16:37:24 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
-
 
 int		count_team(char *map, char c)
 {

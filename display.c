@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Wed Mar 27 14:27:14 2013 florian dell-aiera
-** Last update Sun Mar 31 15:46:25 2013 florian dell-aiera
+** Last update Sun Mar 31 16:28:32 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -87,15 +87,20 @@ static void	boucle(t_map *ptr)
     }
 }
 
-int		main(int ac, char **av)
+int		main()
 {
   t_map		ptr;
+  char		*str;
   int		i;
 
   i = 0;
-  if (ac != 2)
-    return (-1);
-  ptr.map = recup_map(av[1]);
+  str = getenv("PWD");
+  if (str == NULL)
+    {
+      printf("variable pwd null\n");
+      return (-1);
+    }
+  ptr.map = recup_map(str);
   if (init_display(&ptr) == -1 || ptr.map == NULL)
     return (0);
   boucle(&ptr);

@@ -5,23 +5,25 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:07:56 2013 florian dell-aiera
-** Last update Sun Mar 31 14:07:57 2013 florian dell-aiera
+** Last update Sun Mar 31 16:28:20 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
 
-int		main(int ac, char **av)
+int		main()
 {
   t_game	*game;
+  char		*str;
 
-  if (ac != 2)
+  str = getenv("PWD");
+  if (str == NULL)
     {
-      printf("Usage : %s pathname\n", av[0]);
+      printf("variable pwd null\n");
       return (-1);
     }
   game = xmalloc(sizeof(t_game));
   srand(time(NULL));
-  game->key = ftok(av[1], 0);
+  game->key = ftok(str, 0);
   game->shm_id = shmget(game->key, 52, SHM_R | SHM_W);
   printf("shmId = %d\n", game->shm_id);
   game->first = 0;

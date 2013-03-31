@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:08:04 2013 florian dell-aiera
-** Last update Sun Mar 31 15:51:05 2013 florian dell-aiera
+** Last update Sun Mar 31 16:34:59 2013 florian dell-aiera
 */
 
 #include	"lemipc.h"
@@ -34,11 +34,13 @@ static void    	end(t_game *game)
 	{
 	  printf("blue win\n");
 	  shmctl(game->shm_id, IPC_RMID, NULL);
+	  semctl(game->sem_id, 0, IPC_RMID, 0);
 	}
       if (count_team(game->addr, '2') <= 1)
 	{
 	  printf("red win\n");
 	  shmctl(game->shm_id, IPC_RMID, NULL);
+	  semctl(game->sem_id, 0, IPC_RMID, 0);
 	}
     }
 }

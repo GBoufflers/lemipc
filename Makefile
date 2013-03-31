@@ -5,7 +5,7 @@
 ## Login   <dell-a_f@epitech.net>
 ## 
 ## Started on  Thu Mar 28 10:08:41 2013 florian dell-aiera
-## Last update Sun Mar 31 14:51:25 2013 florian dell-aiera
+## Last update Sun Mar 31 16:14:08 2013 florian dell-aiera
 ##
 
 
@@ -32,7 +32,7 @@ OBJ	=	$(SRC:.c=.o)
 OBJD	=	$(SRCD:.c=.o)
 
 LDFLAGS	=	-lSDL
-CFLAGS	=	-g -W -Wall
+CFLAGS	=	-g -W -Wall -Wextra
 
 all:		$(NAME) $(NAMED)
 
