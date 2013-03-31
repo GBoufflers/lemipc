@@ -5,7 +5,7 @@
 ** Login   <dell-a_f@epitech.net>
 ** 
 ** Started on  Sun Mar 31 14:07:44 2013 florian dell-aiera
-** Last update Sun Mar 31 15:43:18 2013 florian dell-aiera
+** Last update Sun Mar 31 20:00:13 2013 florian dell-aiera
 */
 
 #ifndef		__LEMIPC_H__
@@ -23,8 +23,8 @@
 #include	<time.h>
 #include	<unistd.h>
 
-#define	H	640
-#define	W	640
+#define		H	640
+#define		W	640
 
 typedef struct	s_map
 {
